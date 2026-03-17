@@ -1,8 +1,9 @@
 {
-  "name": "youtube-live-chat-collapsed-by-default",
-  "description": "manifest.json description",
   "private": true,
+  "name": "youtube-live-chat-collapsed-by-default",
   "version": "0.1.0",
+  "author": "Sigsign <sig@signote.cc>",
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",
