@@ -13,7 +13,9 @@ declare global {
 type PageDataFetchedEvent = DocumentEventMap["yt-page-data-fetched"];
 
 export default defineUnlistedScript(async () => {
-  let setCollapse = await channel.sendMessage("fetch");
+  const script = document.currentScript;
+
+  let setCollapse = script?.dataset.shouldCollapse === "true";
 
   channel.onMessage("sync", ({ data }) => {
     setCollapse = data;

@@ -1,7 +1,6 @@
 import { defineCustomEventMessaging } from "@webext-core/messaging/page";
 
 interface ChannelSchema {
-  fetch(): boolean;
   sync(value: boolean): void;
 }
 

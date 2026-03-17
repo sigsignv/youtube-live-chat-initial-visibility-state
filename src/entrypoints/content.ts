@@ -19,9 +19,12 @@ export default defineContentScript({
   allFrames: false,
 
   async main(ctx) {
-    channel.onMessage("fetch", () => liveChatCollapsed.getValue());
-
-    await injectScript("/injected.js");
+    await injectScript("/injected.js", {
+      modifyScript: async (script) => {
+        const shouldCollapse = await liveChatCollapsed.getValue();
+        script.dataset.shouldCollapse = shouldCollapse ? "true" : "false";
+      },
+    });
 
     const unwatch = liveChatCollapsed.watch((value) =>
       channel.sendMessage("sync", value),
