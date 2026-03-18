@@ -6,10 +6,12 @@ export default defineContentScript({
   allFrames: false,
 
   async main(ctx) {
-    await injectScript("/injected.js");
+    const { script } = await injectScript("/injected.js");
 
-    ctx.onInvalidated(() => {
-      console.log("[Collapsed by Default] Content script unloaded");
+    ctx.addEventListener(document, "yt-navigate-finish", () => {
+      if (ctx.isInvalid) {
+        script.dispatchEvent(new Event("extension:shutdown"));
+      }
     });
   },
 });

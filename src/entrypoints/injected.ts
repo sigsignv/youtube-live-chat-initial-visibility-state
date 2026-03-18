@@ -5,7 +5,7 @@ import type { LiveChatRenderer } from "~/utils/types";
 export default defineUnlistedScript(async () => {
   const script = document.currentScript;
 
-  onPageDataFetched((liveChat) => {
+  const remove = onPageDataFetched((liveChat) => {
     if (!liveChat) {
       return;
     }
@@ -15,6 +15,13 @@ export default defineUnlistedScript(async () => {
       console.debug("[Collapsed by Default] live chat collapsed");
     }
   });
+
+  const shutdown = () => {
+    console.debug("Shutting down injected script");
+    remove();
+  };
+
+  script?.addEventListener("extension:shutdown", shutdown, { once: true });
 });
 
 function isInitiallyExpanded(liveChat: LiveChatRenderer) {
