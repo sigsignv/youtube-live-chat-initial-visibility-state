@@ -1,18 +1,13 @@
 import { defineUnlistedScript } from "#imports";
 import { onPageDataFetched } from "~/utils/events";
-import type { LiveChatRenderer } from "~/utils/types";
 
 export default defineUnlistedScript(async () => {
   const script = document.currentScript;
 
   const remove = onPageDataFetched((liveChat) => {
-    if (!liveChat) {
-      return;
-    }
-
-    if (isInitiallyExpanded(liveChat)) {
+    if (liveChat.initialDisplayState === "LIVE_CHAT_DISPLAY_STATE_EXPANDED") {
       liveChat.initialDisplayState = "LIVE_CHAT_DISPLAY_STATE_COLLAPSED";
-      console.debug("[Collapsed by Default] live chat collapsed");
+      console.debug("Collapsed live chat automatically");
     }
   });
 
@@ -23,7 +18,3 @@ export default defineUnlistedScript(async () => {
 
   script?.addEventListener("extension:shutdown", shutdown, { once: true });
 });
-
-function isInitiallyExpanded(liveChat: LiveChatRenderer) {
-  return liveChat.initialDisplayState === "LIVE_CHAT_DISPLAY_STATE_EXPANDED";
-}
