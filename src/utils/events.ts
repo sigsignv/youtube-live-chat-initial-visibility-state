@@ -32,8 +32,8 @@ const PageDataDetailSchema = v.object({
 
 type PageDataDetail = v.InferOutput<typeof PageDataDetailSchema>;
 
-export function onPageDataFetched(
-  callback: (liveChat: LiveChatRenderer) => void,
+export function onLiveChatRendererReady(
+  callback: (liveChatRenderer: LiveChatRenderer) => void,
 ) {
   const controller = new AbortController();
   const signal = controller.signal;
@@ -45,12 +45,12 @@ export function onPageDataFetched(
     }
 
     try {
-      const liveChat =
+      const liveChatRenderer =
         ev.detail.pageData.response.contents.twoColumnWatchNextResults
           .conversationBar.liveChatRenderer;
-      callback(liveChat);
+      callback(liveChatRenderer);
     } catch (error) {
-      console.error("Failed onPageDataFetched callback", error);
+      console.error("onLiveChatRendererReady callback failed", error);
     }
   };
 
