@@ -6,10 +6,3 @@ export const liveChatCollapsed = storage.defineItem<boolean>(
     fallback: true,
   },
 );
-
-export const liveChatReplayCollapsed = storage.defineItem<boolean>(
-  "local:liveChatReplayCollapsed",
-  {
-    fallback: true,
-  },
-);

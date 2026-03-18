@@ -13,7 +13,7 @@ export default defineUnlistedScript(async () => {
   });
 
   onPageDataFetched((liveChat) => {
-    if (!liveChat || liveChat.isReplay) {
+    if (!liveChat) {
       return;
     }
 
