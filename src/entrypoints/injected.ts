@@ -1,5 +1,4 @@
 import { defineUnlistedScript } from "#imports";
-import { channel } from "@/utils/messaging";
 import type { LiveChatRenderer, WatchPageResponse } from "@/utils/types";
 
 declare global {
@@ -16,9 +15,10 @@ export default defineUnlistedScript(async () => {
   const script = document.currentScript;
 
   let setCollapse = script?.dataset.shouldCollapse === "true";
-
-  channel.onMessage("sync", ({ data }) => {
-    setCollapse = data;
+  script?.addEventListener("extension:config-updated", (ev) => {
+    if (ev instanceof CustomEvent) {
+      setCollapse = ev.detail.shouldCollapse;
+    }
   });
 
   const handler = (ev: PageDataFetchedEvent) => {

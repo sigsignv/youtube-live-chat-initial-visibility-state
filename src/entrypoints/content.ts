@@ -1,5 +1,4 @@
 import { defineContentScript, injectScript } from "#imports";
-import { channel } from "@/utils/messaging";
 import { liveChatCollapsed, liveChatReplayCollapsed } from "@/utils/storage";
 import type { WatchPageResponse } from "@/utils/types";
 
@@ -19,16 +18,20 @@ export default defineContentScript({
   allFrames: false,
 
   async main(ctx) {
-    await injectScript("/injected.js", {
+    const { script } = await injectScript("/injected.js", {
       modifyScript: async (script) => {
         const shouldCollapse = await liveChatCollapsed.getValue();
         script.dataset.shouldCollapse = shouldCollapse ? "true" : "false";
       },
     });
 
-    const unwatch = liveChatCollapsed.watch((value) =>
-      channel.sendMessage("sync", value),
-    );
+    const unwatch = liveChatCollapsed.watch((value) => {
+      script.dispatchEvent(
+        new CustomEvent("extension:config-updated", {
+          detail: { shouldCollapse: value },
+        }),
+      );
+    });
     ctx.onInvalidated(() => unwatch());
 
     ctx.addEventListener(document, "yt-navigate-finish", async (ev) => {
