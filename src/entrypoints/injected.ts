@@ -1,5 +1,4 @@
 import { defineUnlistedScript } from "#imports";
-import { channel } from "@/utils/messaging";
 import type { LiveChatRenderer, WatchPageResponse } from "@/utils/types";
 
 declare global {
@@ -13,10 +12,13 @@ declare global {
 type PageDataFetchedEvent = DocumentEventMap["yt-page-data-fetched"];
 
 export default defineUnlistedScript(async () => {
-  let setCollapse = await channel.sendMessage("fetch");
+  const script = document.currentScript;
 
-  channel.onMessage("sync", ({ data }) => {
-    setCollapse = data;
+  let setCollapse = script?.dataset.shouldCollapse === "true";
+  script?.addEventListener("extension:config-updated", (ev) => {
+    if (ev instanceof CustomEvent) {
+      setCollapse = ev.detail.shouldCollapse;
+    }
   });
 
   const handler = (ev: PageDataFetchedEvent) => {
