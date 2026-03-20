@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g id="layer1">
+    <rect
+       style="fill:#ff0033;fill-opacity:1;stroke:#ff0033;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       id="rect1"
+       width="382"
+       height="270"
+       x="64"
+       y="64" />
+    <rect
+       style="fill:#ff0033;fill-opacity:1;stroke:#ff0033;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       id="rect2"
+       width="134"
+       height="6"
+       x="-448"
+       y="184"
+       transform="rotate(-90)" />
+    <rect
+       style="fill:#ff0033;fill-opacity:1;stroke:#ff0033;stroke-width:64;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       id="rect3"
+       width="304"
+       height="8"
+       x="-182"
+       y="444"
+       transform="rotate(-45)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:48;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       id="rect10"
+       width="192"
+       height="8"
+       x="224"
+       y="-46"
+       transform="rotate(45)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:48;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;"
+       id="rect10-2"
+       width="192"
+       height="8"
+       x="-138"
+       y="-324"
+       transform="rotate(135)" />
+  </g>
+</svg>

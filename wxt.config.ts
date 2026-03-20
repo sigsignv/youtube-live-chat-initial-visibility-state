@@ -11,6 +11,9 @@ export default defineConfig({
     ],
   },
   modules: ["@wxt-dev/auto-icons"],
+  autoIcons: {
+    baseIconPath: "assets/icon.svg",
+  },
   imports: false,
   srcDir: "src",
 });
