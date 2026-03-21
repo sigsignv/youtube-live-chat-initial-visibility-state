@@ -1,5 +1,7 @@
 # YouTube Live Chat Collapsed by Default
 
+A browser extension that keeps YouTube Live Chat collapsed by default.
+
 ## Author
 
 - Sigsign <<sig@signote.cc>>
