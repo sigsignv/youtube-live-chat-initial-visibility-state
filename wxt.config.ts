@@ -3,6 +3,7 @@ import { defineConfig } from "wxt";
 export default defineConfig({
   manifest: {
     name: "YouTube Live Chat Collapsed by Default",
+    permissions: ["storage"],
     web_accessible_resources: [
       {
         resources: ["injected.js"],
