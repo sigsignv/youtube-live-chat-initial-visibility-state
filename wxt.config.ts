@@ -10,7 +10,7 @@ export default defineConfig({
       },
     ],
   },
-  modules: ["@wxt-dev/auto-icons"],
+  modules: ["@wxt-dev/auto-icons", "@wxt-dev/module-solid"],
   autoIcons: {
     baseIconPath: "assets/icon.svg",
   },
