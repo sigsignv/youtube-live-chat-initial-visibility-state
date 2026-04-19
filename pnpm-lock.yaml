@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@wxt-dev/storage':
+        specifier: ^1.2.8
+        version: 1.2.8
       solid-js:
         specifier: ^1.9.12
         version: 1.9.12
