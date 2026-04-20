@@ -32,29 +32,30 @@ const PageDataDetailSchema = v.object({
 
 type PageDataDetail = v.InferOutput<typeof PageDataDetailSchema>;
 
+type Disposer = () => void;
+
 export function onLiveChatRendererReady(
   callback: (liveChatRenderer: LiveChatRenderer) => void,
-) {
-  const controller = new AbortController();
-  const signal = controller.signal;
-
+): Disposer {
   const listener = (ev: CustomEvent<PageDataDetail>) => {
-    const r = v.safeParse(PageDataDetailSchema, ev.detail);
-    if (!r.success) {
+    const parsed = v.safeParse(PageDataDetailSchema, ev.detail);
+    if (!parsed.success) {
       return;
     }
 
     try {
-      const liveChatRenderer =
+      const { liveChatRenderer } =
         ev.detail.pageData.response.contents.twoColumnWatchNextResults
-          .conversationBar.liveChatRenderer;
+          .conversationBar;
       callback(liveChatRenderer);
-    } catch (error) {
-      console.error("onLiveChatRendererReady callback failed", error);
+    } catch (ex) {
+      console.error(ex);
     }
   };
 
-  document.addEventListener("yt-page-data-fetched", listener, { signal });
+  document.addEventListener("yt-page-data-fetched", listener);
 
-  return () => controller.abort();
+  return () => {
+    document.removeEventListener("yt-page-data-fetched", listener);
+  };
 }

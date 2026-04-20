@@ -3,6 +3,7 @@ import { defineConfig } from "wxt";
 export default defineConfig({
   manifest: {
     name: "YouTube Live Chat Collapsed by Default",
+    permissions: ["storage"],
     web_accessible_resources: [
       {
         resources: ["injected.js"],
@@ -10,7 +11,7 @@ export default defineConfig({
       },
     ],
   },
-  modules: ["@wxt-dev/auto-icons"],
+  modules: ["@wxt-dev/auto-icons", "@wxt-dev/module-solid"],
   autoIcons: {
     baseIconPath: "assets/icon.svg",
   },
