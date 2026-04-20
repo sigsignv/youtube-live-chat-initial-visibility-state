@@ -20,17 +20,15 @@ export default defineContentScript({
       },
     });
 
-    const liveChatBehavior = await liveChatBehaviorStorage.getValue();
+    const currentBehavior = await liveChatBehaviorStorage.getValue();
     script.dispatchEvent(
       new CustomEvent("extension:liveChatBehavior", {
-        detail: liveChatBehavior,
+        detail: currentBehavior,
       }),
     );
 
-    ctx.addEventListener(document, "yt-navigate-finish", () => {
-      if (ctx.isInvalid) {
-        script.dispatchEvent(new Event("extension:shutdown"));
-      }
+    ctx.onInvalidated(() => {
+      script.dispatchEvent(new Event("extension:shutdown"));
     });
   },
 });

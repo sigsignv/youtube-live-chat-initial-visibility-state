@@ -5,7 +5,7 @@ import { isLiveChatBehavior, type LiveChatBehavior } from "~/utils/storage";
 export default defineUnlistedScript(async () => {
   const script = document.currentScript;
   if (!script) {
-    throw new Error("script element not found");
+    throw new Error("Script element not found");
   }
 
   let liveChatBehavior: LiveChatBehavior = "followDefault";
@@ -23,18 +23,17 @@ export default defineUnlistedScript(async () => {
   const dispose = onLiveChatRendererReady((r) => {
     switch (liveChatBehavior) {
       case "followDefault":
-        // Do nothing
         break;
       case "forceCollapsed":
         if (r.initialDisplayState === "LIVE_CHAT_DISPLAY_STATE_EXPANDED") {
           r.initialDisplayState = "LIVE_CHAT_DISPLAY_STATE_COLLAPSED";
-          console.debug("Collapsed live chat automatically");
+          console.debug("Collapsed live chat");
         }
         break;
       case "forceExpanded":
         if (r.initialDisplayState === "LIVE_CHAT_DISPLAY_STATE_COLLAPSED") {
           r.initialDisplayState = "LIVE_CHAT_DISPLAY_STATE_EXPANDED";
-          console.debug("Expanded live chat automatically");
+          console.debug("Expanded live chat");
         }
         break;
       default: {
