@@ -2,7 +2,7 @@
   "private": true,
   "name": "youtube-live-chat-initial-visibility-state",
   "description": "Control the initial visibility state of YouTube Live Chat.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Sigsign <sig@signote.cc>",
   "license": "Apache-2.0",
   "type": "module",
