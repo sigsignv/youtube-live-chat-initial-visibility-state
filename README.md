@@ -1,6 +1,6 @@
-# YouTube Live Chat Collapsed by Default
+# YouTube Live Chat Initial Visibility State
 
-A browser extension that keeps YouTube Live Chat collapsed by default.
+A browser extension that controls the initial visibility state of YouTube Live Chat.
 
 ## Author
 
