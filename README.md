@@ -2,6 +2,28 @@
 
 A browser extension that controls the initial visibility state of YouTube Live Chat.
 
+## Development
+
+### Setup
+
+```sh
+$ pnpm install
+```
+
+### Build
+
+For Chrome / Chromium:
+
+```sh
+$ pnpm run zip
+```
+
+For Firefox:
+
+```sh
+$ pnpm run zip:firefox
+```
+
 ## Author
 
 - Sigsign <<sig@signote.cc>>
