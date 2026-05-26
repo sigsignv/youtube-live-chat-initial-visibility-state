@@ -1,8 +1,6 @@
 import { createSignal, onMount } from "solid-js";
-import {
-  type LiveChatBehavior,
-  liveChatBehaviorStorage,
-} from "~/utils/storage";
+import { liveChatBehaviorStorage } from "~/utils/storage";
+import type { LiveChatBehavior } from "~/utils/types";
 
 export default function App() {
   const [liveChatBehavior, setLiveChatBehavior] =

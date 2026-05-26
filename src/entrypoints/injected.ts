@@ -1,6 +1,6 @@
 import { defineUnlistedScript } from "#imports";
 import { onLiveChatRendererReady } from "~/utils/events";
-import { isLiveChatBehavior, type LiveChatBehavior } from "~/utils/storage";
+import { isLiveChatBehavior, type LiveChatBehavior } from "~/utils/types";
 
 export default defineUnlistedScript(async () => {
   const script = document.currentScript;
